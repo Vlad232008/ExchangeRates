@@ -1,3 +1,3 @@
 package com.example.myapplication.model.nal
 
-class nalichka : ArrayList<NalichkaItem>()
+class Nalichka : ArrayList<NalichkaItem>()

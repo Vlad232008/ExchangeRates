@@ -6,11 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.R
-import com.example.myapplication.model.nal.NalichkaItem
+import com.example.myapplication.model.curse.KurseItem
 import kotlinx.android.synthetic.main.item_money_layout.view.*
 
 class StartAdapter:RecyclerView.Adapter<StartAdapter.StartViewHolder>() {
-    var listStart = emptyList<NalichkaItem>()
+    var listStart = emptyList<KurseItem>()
     class
         StartViewHolder(view: View): RecyclerView.ViewHolder(view)
 
@@ -20,9 +20,15 @@ class StartAdapter:RecyclerView.Adapter<StartAdapter.StartViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: StartViewHolder, position: Int) {
-        holder.itemView.item_name.text = listStart[position].ccy
-        holder.itemView.item_buy.text = listStart[position].buy
-        holder.itemView.item_sale.text = listStart[position].sale
+        holder.itemView.item_name.text = listStart[position].currencyCodeA.toString()
+        if (listStart[position].rateBuy == 0.0){
+            holder.itemView.item_buy.text = listStart[position].rateCross.toString()
+            holder.itemView.item_sale.text = ""
+        }
+        else {
+            holder.itemView.item_buy.text = listStart[position].rateBuy.toString()
+            holder.itemView.item_sale.text = listStart[position].rateSell.toString()
+        }
     }
 
     override fun getItemCount(): Int {
@@ -30,7 +36,7 @@ class StartAdapter:RecyclerView.Adapter<StartAdapter.StartViewHolder>() {
     }
 
     @SuppressLint("NotifyDataSetChanged")
-    fun setList(list:List<NalichkaItem>){
+    fun setList(list:List<KurseItem>){
         listStart = list
         notifyDataSetChanged()
     }

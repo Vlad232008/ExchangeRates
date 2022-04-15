@@ -1,3 +1,3 @@
 package com.example.myapplication.model.beznal
 
-class beznal : ArrayList<BeznalItem>()
+class Beznal : ArrayList<BeznalItem>()

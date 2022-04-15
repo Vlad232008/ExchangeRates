@@ -1,0 +1,1 @@
+class Kurse : ArrayList<KurseItem>()

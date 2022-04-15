@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.FragmentActivity
 import com.example.myapplication.R
 import com.example.myapplication.ViewPagerAdapter
+import com.google.android.material.tabs.TabLayoutMediator
 import kotlinx.android.synthetic.main.fragment_root.*
 import kotlinx.android.synthetic.main.fragment_root.view.*
 
@@ -28,6 +29,17 @@ class RootFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_root, container,false)
         view.tab_layout.tabIconTint = null
         view.view_pager.adapter = ViewPagerAdapter(ctx as FragmentActivity)
+        TabLayoutMediator(view.tab_layout, view.view_pager){
+            tab, pos ->
+            when(pos){
+                0 ->{
+                    tab.setIcon(R.drawable.ic_baseline_monetization_on_24)
+                }
+                1 ->{
+                    tab.setIcon(R.drawable.ic_baseline_attach_money_24)
+                }
+            }
+        }.attach()
         //Inflate the layout for this fragment
         return view
     }
